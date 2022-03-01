@@ -1,0 +1,30 @@
+{
+	"name": "weather-app",
+	"version": "1.0.0",
+	"description": "A Web application used to check weather in various cities around the world using the Open Weather API.",
+	"private": true,
+	"scripts": {
+		"test": "echo \"Error: no test specified\" && exit 1",
+		"build": "webpack"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/A-Doubt/Weather-app.git"
+	},
+	"author": "Paweł Wiśniewski",
+	"license": "ISC",
+	"bugs": {
+		"url": "https://github.com/A-Doubt/Weather-app/issues"
+	},
+	"homepage": "https://github.com/A-Doubt/Weather-app#readme",
+	"devDependencies": {
+		"css-loader": "^6.6.0",
+		"file-loader": "^6.2.0",
+		"html-webpack-plugin": "^5.5.0",
+		"sass": "^1.49.9",
+		"sass-loader": "^12.6.0",
+		"style-loader": "^3.3.1",
+		"webpack": "^5.69.1",
+		"webpack-cli": "^4.9.2"
+	}
+}
