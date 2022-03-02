@@ -7,8 +7,124 @@
 	<title>☀️Weather app☀️</title>
 </head>
 <body>
-	<h1>HELLO</h1>
-	<h2>webpack working</h2>
-	<img src="<%= require('./assets/trash-bin.png') %>" alt="trash bin icon"/>
+	<main>
+		<section class="todays-weather">
+			<div class="today-left">
+				<h2 class="weather-now">Clouds or rain etc.</h2>
+				<h3 class="city-now">City xxxx</h3>
+				<p class="date-now">yyyy.mm.dd</p>
+				<p class="temp-now">x°C</p>
+				<img src="<%= require('./assets/wi-day-sunny.svg') %>" alt="weather-icon" class="weather-icon-now"/>
+
+				<form method="get" class="city-input-form">
+					<input type="text" name="search-weather" id="weather" placeholder="enter city name...">
+					<button type="submit">SEARCH</button>
+				</form>
+
+			</div>
+			<div class="today-right">
+				<div class="wrapper">
+					<div class="details-now">
+						<img src="<%= require('./assets/wi-thermometer.svg') %>"/>
+						<div class="details-text">
+							<p class="label">Feels like</p>
+							<p class="value">x°C</p>
+						</div>
+					</div>
+					<div class="details-now">
+						<img src="<%= require('./assets/wi-strong-wind.svg') %>"/>
+						<div class="details-text">
+							<p class="label">Wind speed</p>
+							<p class="value">xkm/h</p>
+						</div>
+					</div>
+					<div class="details-now">
+						<img src="<%= require('./assets/wi-direction-up.svg') %>"/>
+						<div class="details-text">
+							<p class="label">Wind direction</p>
+							<p class="value">x°</p>
+						</div>
+					</div>
+				</div>
+				<div class="wrapper">
+					<div class="details-now">
+						<img src="<%= require('./assets/wi-humidity.svg') %>"/>
+						<div class="details-text">
+							<p class="label">Humidity</p>
+							<p class="value">x%</p>
+						</div>
+					</div>
+					<div class="details-now">
+						<img src="<%= require('./assets/wi-cloud.svg') %>"/>
+						<div class="details-text">
+							<p class="label">Clouds</p>
+							<p class="value">x%</p>
+						</div>
+					</div>
+					<div class="details-now">
+						<img src="<%= require('./assets/wi-barometer.svg') %>"/>
+						<div class="details-text">
+							<p class="label">Pressure</p>
+							<p class="value">xxxxhPa</p>
+						</div>
+					</div>
+				</div>
+				
+			</div>
+
+		</section>
+	</main>
+	<section class="forecast">
+		<div class="day-card">
+			<h4>Monday</h4>
+			<p class="max">x°C</p>
+			<p class="min">x°C</p>
+			<img src="<%= require('./assets/wi-cloud.svg') %>">
+		</div>
+		<div class="day-card">
+			<h4>Monday</h4>
+			<p class="max">x°C</p>
+			<p class="min">x°C</p>
+			<img src="<%= require('./assets/wi-cloud.svg') %>">
+		</div>
+		<div class="day-card">
+			<h4>Monday</h4>
+			<p class="max">x°C</p>
+			<p class="min">x°C</p>
+			<img src="<%= require('./assets/wi-cloud.svg') %>">
+		</div>
+		<div class="day-card">
+			<h4>Monday</h4>
+			<p class="max">x°C</p>
+			<p class="min">x°C</p>
+			<img src="<%= require('./assets/wi-day-sunny.svg') %>">
+		</div>
+		<div class="day-card">
+			<h4>Monday</h4>
+			<p class="max">x°C</p>
+			<p class="min">x°C</p>
+			<img src="<%= require('./assets/wi-cloud.svg') %>">
+		</div>
+		<div class="day-card">
+			<h4>Monday</h4>
+			<p class="max">x°C</p>
+			<p class="min">x°C</p>
+			<img src="<%= require('./assets/wi-day-sunny-overcast.svg') %>">
+		</div>
+		<div class="day-card">
+			<h4>Monday</h4>
+			<p class="max">x°C</p>
+			<p class="min">x°C</p>
+			<img src="<%= require('./assets/wi-cloud.svg') %>">
+		</div>
+
+	</section>
+
+
+	<footer>
+
+	</footer>
 </body>
 </html>
+
+<!-- <img src="<%= require('./assets/trash-bin.png') %>" alt="trash bin icon"/> -->

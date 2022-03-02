@@ -1,6 +1,54 @@
+*, *::before, *::after {
+	margin: 0;
+	padding: 0;
+}
+
 body {
-	background-color: blue;
-	h1 {
-		color:red;
+	background-color: lightblue;
+	padding: 10vh 10vw;
+}
+
+main {
+	margin-bottom: 100px;
+}
+
+.todays-weather {
+	display: flex;
+	justify-content: space-between;
+}
+.today-right {
+	display: flex;
+	gap: 50px;
+	img {
+		width: 100px;
+	}
+	.details-text{
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+	}
+	.label {
+		font-size: 1.4rem;
+	}
+	.value {
+		font-size: 1.2rem;
+		text-align: center;
+		align-self: center;
+	}
+
+}
+.details-now {
+	display: flex;
+}
+
+
+// FORCAST
+.forecast {
+	display: flex;
+	justify-content: space-between;
+}
+.day-card {
+	img {
+		width: 80px;
 	}
 }
