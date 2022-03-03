@@ -8,18 +8,21 @@
 </head>
 <body>
 	<main>
+		<button>SWITCH UNITS</button>
+		<form method="get" class="city-input-form">
+			<input type="text" name="search-weather" id="weather" placeholder="enter city name..." autocomplete="off">
+			<button type="submit">SEARCH</button>
+		</form>
+
 		<section class="todays-weather">
 			<div class="today-left">
 				<h2 class="weather-now">Clouds or rain etc.</h2>
 				<h3 class="city-now">City xxxx</h3>
 				<p class="date-now">yyyy.mm.dd</p>
-				<p class="temp-now">x°C</p>
-				<img src="<%= require('./assets/wi-day-sunny.svg') %>" alt="weather-icon" class="weather-icon-now"/>
+				<p class="temp-now metric">x °C</p>
+				<p class="temp-now imperial">x °F</p>
 
-				<form method="get" class="city-input-form">
-					<input type="text" name="search-weather" id="weather" placeholder="enter city name...">
-					<button type="submit">SEARCH</button>
-				</form>
+				<img src="<%= require('./assets/wi-day-sunny.svg') %>" alt="weather-icon" class="weather-icon-now"/>
 
 			</div>
 			<div class="today-right">
@@ -28,14 +31,16 @@
 						<img src="<%= require('./assets/wi-thermometer.svg') %>"/>
 						<div class="details-text">
 							<p class="label">Feels like</p>
-							<p class="value">x°C</p>
+							<p class="value metric">x °C</p>
+							<p class="value imperial">x °F</p>
 						</div>
 					</div>
 					<div class="details-now">
 						<img src="<%= require('./assets/wi-strong-wind.svg') %>"/>
 						<div class="details-text">
 							<p class="label">Wind speed</p>
-							<p class="value">xkm/h</p>
+							<p class="value metric">x km/h</p>
+							<p class="value imperial">x mph</p>
 						</div>
 					</div>
 					<div class="details-now">
@@ -51,21 +56,21 @@
 						<img src="<%= require('./assets/wi-humidity.svg') %>"/>
 						<div class="details-text">
 							<p class="label">Humidity</p>
-							<p class="value">x%</p>
+							<p class="value">x %</p>
 						</div>
 					</div>
 					<div class="details-now">
 						<img src="<%= require('./assets/wi-cloud.svg') %>"/>
 						<div class="details-text">
 							<p class="label">Clouds</p>
-							<p class="value">x%</p>
+							<p class="value">x %</p>
 						</div>
 					</div>
 					<div class="details-now">
 						<img src="<%= require('./assets/wi-barometer.svg') %>"/>
 						<div class="details-text">
 							<p class="label">Pressure</p>
-							<p class="value">xxxxhPa</p>
+							<p class="value">xxxx hPa</p>
 						</div>
 					</div>
 				</div>
@@ -77,44 +82,58 @@
 	<section class="forecast">
 		<div class="day-card">
 			<h4>Monday</h4>
-			<p class="max">x°C</p>
-			<p class="min">x°C</p>
+			<p class="max metric">x°C</p>
+			<p class="min metric">x°C</p>
+			<p class="max imperial">x°F</p>
+			<p class="min imperial">x°F</p>
 			<img src="<%= require('./assets/wi-cloud.svg') %>">
 		</div>
 		<div class="day-card">
 			<h4>Monday</h4>
-			<p class="max">x°C</p>
-			<p class="min">x°C</p>
+			<p class="max metric">x°C</p>
+			<p class="min metric">x°C</p>
+			<p class="max imperial">x°F</p>
+			<p class="min imperial">x°F</p>
 			<img src="<%= require('./assets/wi-cloud.svg') %>">
 		</div>
 		<div class="day-card">
 			<h4>Monday</h4>
-			<p class="max">x°C</p>
-			<p class="min">x°C</p>
+			<p class="max metric">x°C</p>
+			<p class="min metric">x°C</p>
+			<p class="max imperial">x°F</p>
+			<p class="min imperial">x°F</p>
 			<img src="<%= require('./assets/wi-cloud.svg') %>">
 		</div>
 		<div class="day-card">
 			<h4>Monday</h4>
-			<p class="max">x°C</p>
-			<p class="min">x°C</p>
+			<p class="max metric">x°C</p>
+			<p class="min metric">x°C</p>
+			<p class="max imperial">x°F</p>
+			<p class="min imperial">x°F</p>
 			<img src="<%= require('./assets/wi-day-sunny.svg') %>">
 		</div>
 		<div class="day-card">
 			<h4>Monday</h4>
-			<p class="max">x°C</p>
-			<p class="min">x°C</p>
+			<p class="max metric">x°C</p>
+			<p class="min metric">x°C</p>
+			<p class="max imperial">x°F</p>
+			<p class="min imperial">x°F</p>
 			<img src="<%= require('./assets/wi-cloud.svg') %>">
 		</div>
 		<div class="day-card">
 			<h4>Monday</h4>
-			<p class="max">x°C</p>
-			<p class="min">x°C</p>
+			<p class="max metric">x°C</p>
+			<p class="min metric">x°C</p>
+			<p class="max imperial">x°F</p>
+			<p class="min imperial">x°F</p>
 			<img src="<%= require('./assets/wi-day-sunny-overcast.svg') %>">
 		</div>
 		<div class="day-card">
 			<h4>Monday</h4>
-			<p class="max">x°C</p>
-			<p class="min">x°C</p>
+			<p class="max metric">x°C</p>
+			<p class="min metric">x°C</p>
+			<p class="max imperial">x°F</p>
+			<p class="min imperial">x°F</p>
 			<img src="<%= require('./assets/wi-cloud.svg') %>">
 		</div>
 

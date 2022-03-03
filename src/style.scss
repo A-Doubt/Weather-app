@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Fredoka&display=swap');
+
 *, *::before, *::after {
 	margin: 0;
 	padding: 0;
@@ -6,19 +8,47 @@
 body {
 	background-color: lightblue;
 	padding: 10vh 10vw;
+	font-family: 'Fredoka', -apple-system, sans-serif;
 }
 
 main {
 	margin-bottom: 100px;
-}
-
-.todays-weather {
 	display: flex;
-	justify-content: space-between;
+	flex-direction: column;
+}
+.metric {
+	display: block;
+}
+.imperial {
+	display: none;
+}
+.todays-weather {
+	@media only screen and (max-width: 600px) {
+		display: flex;
+		flex-direction: column;
+		justify-content: space-between;
+	}
+	@media only screen and (min-width: 601px) {
+		display: flex;
+		flex: 1;
+		justify-content: space-between;
+	}
+	img {
+		width: 200px;
+	}
+
 }
 .today-right {
-	display: flex;
-	gap: 50px;
+	@media only screen and (max-width: 600px) {
+		display: grid;
+		grid-template-columns: 1fr;
+	}
+	@media only screen and (min-width: 601px) {
+		display: grid;
+		grid-template-columns: 1fr 1fr;
+		gap: 50px;
+	}
+
 	img {
 		width: 100px;
 	}
