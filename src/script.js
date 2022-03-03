@@ -1,18 +1,36 @@
 // since this API is free no harm done leaking it
 // 49f5c57e6c9d12a7b3940cf63bfe2742
-import { getWeatherToday } from './DOM_functions';
-import { populateForecast } from './DOM_functions';
-import { chooseIcon } from './DOM_functions';
-import { populateWeatherToday } from './DOM_functions';
+import { getWeatherToday, populateForecast, populateWeatherToday } from './DOM_functions';
+import { chooseIcon } from './helper_functions';
+import { capitaliseEachWord } from './helper_functions';
+import { toggleUnits } from './helper_functions';
 import './style.scss';
 
 let weather;
 let weatherToday;
+let isError = false;
 
 let form = document.querySelector('.city-input-form');
 
 form.addEventListener('submit', renderOnSubmit);
 
+function handleError(err) {
+	const todaysWeather = document.querySelector('.todays-weather');
+	const forecast = document.querySelector('.forecast');
+
+	if (isError) {
+		console.log('from handle error function');
+		console.log(err);
+		console.log(isError)
+
+		todaysWeather.classList.add('invisible');
+		forecast.classList.add('invisible')
+	} else {
+		// todaysWeather.classList.remove('invisible');
+		// forecast.classList.remove('invisible')
+	}
+	isError = false;
+}
 export async function renderOnSubmit(e) {
 	e.preventDefault();
 	const input = form.querySelector('input');
@@ -53,26 +71,43 @@ export async function getCurrentWeather(city) {
 }
 
 async function getWeatherData(city) {
-	const response = await fetch(`http://api.openweathermap.org/data/2.5/weather?q=${city}&APPID=49f5c57e6c9d12a7b3940cf63bfe2742`,{ mode: 'cors', });
-	const weatherData = await response.json();
-	return weatherData;
+	try {
+		const response = await fetch(`http://api.openweathermap.org/data/2.5/weather?q=${city}&APPID=49f5c57e6c9d12a7b3940cf63bfe2742`,{ mode: 'cors', });
+		const weatherData = await response.json();
+		return weatherData;
+	} catch(err) {
+		isError = true;
+		handleError(err);
+	}
+
 }
 
 async function getCoords(city) {
-	const response = await fetch(`http://api.openweathermap.org/data/2.5/weather?q=${city}&APPID=49f5c57e6c9d12a7b3940cf63bfe2742`)
-	const data = await response.json();
+	try {
+		const response = await fetch(`http://api.openweathermap.org/data/2.5/weather?q=${city}&APPID=49f5c57e6c9d12a7b3940cf63bfe2742`)
+		const data = await response.json();
+	
+		let lat = data.coord.lat;
+		let lon = data.coord.lon;
+	
+		return {lat, lon};
+	} catch (err) {
+		isError = true;
+		handleError(err);
+	}
 
-	let lat = data.coord.lat;
-	let lon = data.coord.lon;
-
-	return {lat, lon};
 }
 
 async function getData7days({lat, lon}) {
-	const response = await fetch(`https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&appid=49f5c57e6c9d12a7b3940cf63bfe2742`);
-	const data = await response.json();
+	try {
+		const response = await fetch(`https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&appid=49f5c57e6c9d12a7b3940cf63bfe2742`);
+		const data = await response.json();
 
-	return data;
+		return data;
+	} catch(err) {
+		isError = true;
+		handleError(err);
+	}
 }
 
 
@@ -88,69 +123,36 @@ async function populateWeatherArray(city) {
 	weather = [];
 
 	// gather data from API for next 7 days
-	const data = await getWeather7Days(city);
-	const dailyData = data.daily;
-
-	// make an object for each day and push it to weather array
-	for (let i = 1; i <= 7; i++) {
-		let dayWeather = {
-			day: new Date(dailyData[i].dt * 1000).toLocaleString('en-gb', {weekday:'long'}),
-			date: new Date(dailyData[i].dt * 1000).toISOString().split('T')[0],
-			hiTempC: (dailyData[i].temp.max - 273.15).toFixed(1),
-			lowTempC: (dailyData[i].temp.min - 273.15).toFixed(1),
-			hiTempF: (1.8 * (dailyData[i].temp.max - 273.15) + 32).toFixed(1),
-			lowTempF: (1.8 * (dailyData[i].temp.min - 273.15) + 32).toFixed(1),
-			id: String(dailyData[i].weather[0].id),
+	try {
+		const data = await getWeather7Days(city);
+		const dailyData = data.daily;
+	
+		// make an object for each day and push it to weather array
+		for (let i = 1; i <= 7; i++) {
+			let dayWeather = {
+				day: new Date(dailyData[i].dt * 1000).toLocaleString('en-gb', {weekday:'long'}),
+				date: new Date(dailyData[i].dt * 1000).toISOString().split('T')[0],
+				hiTempC: (dailyData[i].temp.max - 273.15).toFixed(1),
+				lowTempC: (dailyData[i].temp.min - 273.15).toFixed(1),
+				hiTempF: (1.8 * (dailyData[i].temp.max - 273.15) + 32).toFixed(1),
+				lowTempF: (1.8 * (dailyData[i].temp.min - 273.15) + 32).toFixed(1),
+				id: String(dailyData[i].weather[0].id),
+			}
+			weather.push(dayWeather);
 		}
-		weather.push(dayWeather);
+	} catch(err) {
+		isError = true;
+		handleError(err);
 	}
 }
 
-
-// populateWeatherToday('helsinki');
-// populateWeatherArray('london');
-// getWeather7Days('london');
-
-function capitaliseEachWord(string) {
-	const words = string.split(" ");
-	let result = words.map((word) => { 
-		return word[0].toUpperCase() + word.substring(1); 
-	}).join(" ");
-	return result;
-}
 
 async function render(city) {
 	await getWeather7Days(city);
 	await populateWeatherArray(city);
 	await populateWeatherToday(city);
 	await populateForecast(weather);
-}
-
-const unitsButton = document.querySelector('main > button');
-
-unitsButton.addEventListener('click', toggleUnits);
-
-// switch from metric to imperial and vice versa
-function toggleUnits() {
-
-	const unitsMetric = document.querySelectorAll('.metric');
-	const unitsImperial = document.querySelectorAll('.imperial');
-
-	// check which units are visible
-
-	unitsMetric.forEach((unit) => {
-		if(window.getComputedStyle(unit).display === 'block') {
-			unit.style.display = 'none';
-		}
-		else unit.style.display = 'block';
-	});
-	
-	unitsImperial.forEach((unit) => {
-		if(window.getComputedStyle(unit).display === 'block') {
-			unit.style.display = 'none';
-		}
-		else unit.style.display = 'block';
-	});
+	handleError();
 }
 
 render('berlin');

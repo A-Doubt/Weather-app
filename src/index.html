@@ -8,22 +8,26 @@
 </head>
 <body>
 	<main>
-		<button>SWITCH UNITS</button>
 		<form method="get" class="city-input-form">
-			<input type="text" name="search-weather" id="weather" placeholder="enter city name..." autocomplete="off">
-			<button type="submit">SEARCH</button>
+			<input type="text" name="search-weather" id="weather" placeholder=" " autocomplete="off">
+			<label for="weather">enter city name...</label>
+			<button type="submit"><img src="<%= require('./assets/magnifying-glass.png') %>"></button>
 		</form>
-
+		<div class="error">
+			<p>Something went wrong. Please try again.</p>
+		</div>
 		<section class="todays-weather">
 			<div class="today-left">
-				<h2 class="weather-now">Clouds or rain etc.</h2>
-				<h3 class="city-now">City xxxx</h3>
+				<h2 class="weather-now">N/A</h2>
+				<h3 class="city-now">City N/A</h3>
 				<p class="date-now">yyyy.mm.dd</p>
-				<p class="temp-now metric">x °C</p>
-				<p class="temp-now imperial">x °F</p>
-
+				<p class="temp-now metric">N/A °C</p>
+				<p class="temp-now imperial">N/A °F</p>
+				<div class="units-swap metric">Display imperial units</div>
+				<div class="units-swap imperial">Display metric units</div>
+				
 				<img src="<%= require('./assets/wi-day-sunny.svg') %>" alt="weather-icon" class="weather-icon-now"/>
-
+				
 			</div>
 			<div class="today-right">
 				<div class="wrapper">
@@ -31,23 +35,23 @@
 						<img src="<%= require('./assets/wi-thermometer.svg') %>"/>
 						<div class="details-text">
 							<p class="label">Feels like</p>
-							<p class="value metric">x °C</p>
-							<p class="value imperial">x °F</p>
+							<p class="value metric">N/A °C</p>
+							<p class="value imperial">N/A °F</p>
 						</div>
 					</div>
 					<div class="details-now">
 						<img src="<%= require('./assets/wi-strong-wind.svg') %>"/>
 						<div class="details-text">
 							<p class="label">Wind speed</p>
-							<p class="value metric">x km/h</p>
-							<p class="value imperial">x mph</p>
+							<p class="value metric">N/A km/h</p>
+							<p class="value imperial">N/A mph</p>
 						</div>
 					</div>
 					<div class="details-now">
 						<img src="<%= require('./assets/wi-direction-up.svg') %>"/>
 						<div class="details-text">
 							<p class="label">Wind direction</p>
-							<p class="value">x°</p>
+							<p class="value">N/A°</p>
 						</div>
 					</div>
 				</div>
@@ -56,94 +60,101 @@
 						<img src="<%= require('./assets/wi-humidity.svg') %>"/>
 						<div class="details-text">
 							<p class="label">Humidity</p>
-							<p class="value">x %</p>
+							<p class="value">N/A %</p>
 						</div>
 					</div>
 					<div class="details-now">
 						<img src="<%= require('./assets/wi-cloud.svg') %>"/>
 						<div class="details-text">
 							<p class="label">Clouds</p>
-							<p class="value">x %</p>
+							<p class="value">N/A %</p>
 						</div>
 					</div>
 					<div class="details-now">
 						<img src="<%= require('./assets/wi-barometer.svg') %>"/>
 						<div class="details-text">
 							<p class="label">Pressure</p>
-							<p class="value">xxxx hPa</p>
+							<p class="value">N/A hPa</p>
 						</div>
 					</div>
 				</div>
 				
 			</div>
-
+			
+		</section>
+		<section class="forecast">
+			<div class="day-card">
+				<h4>Monday</h4>
+				<p class="max metric">N/A °C</p>
+				<p class="min metric">N/A °C</p>
+				<p class="max imperial">N/A °F</p>
+				<p class="min imperial">N/A °F</p>
+				<img src="<%= require('./assets/wi-cloud.svg') %>">
+			</div>
+			<div class="day-card">
+				<h4>Tuesday</h4>
+				<p class="max metric">N/A °C</p>
+				<p class="min metric">N/A °C</p>
+				<p class="max imperial">N/A °F</p>
+				<p class="min imperial">N/A °F</p>
+				<img src="<%= require('./assets/wi-cloud.svg') %>">
+			</div>
+			<div class="day-card">
+				<h4>Wednesday</h4>
+				<p class="max metric">N/A °C</p>
+				<p class="min metric">N/A </p>
+				<p class="max imperial">N/A °F</p>
+				<p class="min imperial">N/A °F</p>
+				<img src="<%= require('./assets/wi-cloud.svg') %>">
+			</div>
+			<div class="day-card">
+				<h4>Thursday</h4>
+				<p class="max metric">N/A °C</p>
+				<p class="min metric">N/A °C</p>
+				<p class="max imperial">N/A °F</p>
+				<p class="min imperial">N/A °F</p>
+				<img src="<%= require('./assets/wi-day-sunny.svg') %>">
+			</div>
+			<div class="day-card">
+				<h4>Friday</h4>
+				<p class="max metric">N/A °C</p>
+				<p class="min metric">N/A °C</p>
+				<p class="max imperial">N/A °F</p>
+				<p class="min imperial">N/A °F</p>
+				<img src="<%= require('./assets/wi-cloud.svg') %>">
+			</div>
+			<div class="day-card">
+				<h4>Saturday</h4>
+				<p class="max metric">N/A °C</p>
+				<p class="min metric">N/A °C</p>
+				<p class="max imperial">N/A °F</p>
+				<p class="min imperial">N/A °F</p>
+				<img src="<%= require('./assets/wi-day-sunny-overcast.svg') %>">
+			</div>
+			<div class="day-card">
+				<h4>Sunday</h4>
+				<p class="max metric">N/A °C</p>
+				<p class="min metric">N/A °C</p>
+				<p class="max imperial">N/A °F</p>
+				<p class="min imperial">N/A °F</p>
+				<img src="<%= require('./assets/wi-cloud.svg') %>">
+			</div>
+			
 		</section>
 	</main>
-	<section class="forecast">
-		<div class="day-card">
-			<h4>Monday</h4>
-			<p class="max metric">x°C</p>
-			<p class="min metric">x°C</p>
-			<p class="max imperial">x°F</p>
-			<p class="min imperial">x°F</p>
-			<img src="<%= require('./assets/wi-cloud.svg') %>">
-		</div>
-		<div class="day-card">
-			<h4>Monday</h4>
-			<p class="max metric">x°C</p>
-			<p class="min metric">x°C</p>
-			<p class="max imperial">x°F</p>
-			<p class="min imperial">x°F</p>
-			<img src="<%= require('./assets/wi-cloud.svg') %>">
-		</div>
-		<div class="day-card">
-			<h4>Monday</h4>
-			<p class="max metric">x°C</p>
-			<p class="min metric">x°C</p>
-			<p class="max imperial">x°F</p>
-			<p class="min imperial">x°F</p>
-			<img src="<%= require('./assets/wi-cloud.svg') %>">
-		</div>
-		<div class="day-card">
-			<h4>Monday</h4>
-			<p class="max metric">x°C</p>
-			<p class="min metric">x°C</p>
-			<p class="max imperial">x°F</p>
-			<p class="min imperial">x°F</p>
-			<img src="<%= require('./assets/wi-day-sunny.svg') %>">
-		</div>
-		<div class="day-card">
-			<h4>Monday</h4>
-			<p class="max metric">x°C</p>
-			<p class="min metric">x°C</p>
-			<p class="max imperial">x°F</p>
-			<p class="min imperial">x°F</p>
-			<img src="<%= require('./assets/wi-cloud.svg') %>">
-		</div>
-		<div class="day-card">
-			<h4>Monday</h4>
-			<p class="max metric">x°C</p>
-			<p class="min metric">x°C</p>
-			<p class="max imperial">x°F</p>
-			<p class="min imperial">x°F</p>
-			<img src="<%= require('./assets/wi-day-sunny-overcast.svg') %>">
-		</div>
-		<div class="day-card">
-			<h4>Monday</h4>
-			<p class="max metric">x°C</p>
-			<p class="min metric">x°C</p>
-			<p class="max imperial">x°F</p>
-			<p class="min imperial">x°F</p>
-			<img src="<%= require('./assets/wi-cloud.svg') %>">
-		</div>
-
-	</section>
-
-
 	<footer>
-
+		<div class="links">
+			<a href="https://www.flaticon.com/free-icons/search" title="search icons">Search icons created by Freepik - Flaticon</a>
+			<div class="wrapper">Photo by <a href="https://unsplash.com/@taylorvanriper925?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Taylor Van Riper</a> on <a href="https://unsplash.com/s/photos/weather?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a></div>
+		</div>
+		<p class="github">Made by  
+			<a class="github-link" href="https://github.com/A-Doubt">Paweł Wiśniewski</a>
+			
+			<a class="github-link" href="https://github.com/A-Doubt"><img src="<%= require('./assets/GitHub-Mark-Light-64px.png') %>" alt="Git hub logo"/>
+			</a>2022
+		</p>
+		<p> </p>
+		
 	</footer>
 </body>
 </html>
-
-<!-- <img src="<%= require('./assets/trash-bin.png') %>" alt="trash bin icon"/> -->
