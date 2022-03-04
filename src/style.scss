@@ -1,7 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Fredoka&display=swap');
 
-
-
 // Table of content
 // 1. page-wide styling
 // 2. .todays-weather
@@ -20,8 +18,7 @@
 }
 
 body {
-	background: url("./assets/taylor-van-riper-yQorCngxzwI-unsplash.jpg")no-repeat 10%;
-
+	background: url("./assets/taylor-van-riper-yQorCngxzwI-unsplash.jpg")no-repeat 5%;
 	min-height: 100vh;
 	display: flex;
 	flex-direction: column;
@@ -53,6 +50,10 @@ main {
 	display: none !important;
 }
 .error {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap: 50px;
 	color: red;
 	width: 100%;
 	font-size: 2rem;
@@ -130,7 +131,6 @@ main {
 			font-size: max(1.1rem, 3.6vw);
 			font-weight: 600;
 		}
-
 	}
 
 	@media only screen and (min-width: 601px) {
@@ -164,6 +164,7 @@ main {
 //2.2 .today-left
 .today-left {
 	gap: 10px;
+	
 	h2 {
 		font-size: 2.5rem;
 	}
@@ -193,13 +194,16 @@ main {
 		align-items: center;
 		gap: 3rem;
 	}
+
 	@media only screen and (max-width: 900px) {
 		margin-bottom: 1rem;
 	}
+
 	@media only screen and (min-width: 901px) {
 		margin-top: 5rem;
 	}
 }
+
 .day-card {
 	display: flex;
 	flex-direction: column;
@@ -222,6 +226,7 @@ main {
 			font-size: 5vw;
 		}
 	}
+
 	@media only screen and (min-width: 601px) {
 		img {
 			width: max(40px, 6vw);
@@ -245,6 +250,17 @@ main {
 
 // 4. footer and its content
 footer {
+	color: white;
+	position: fixed;
+	display: flex;
+	justify-content: space-between;
+	width: 100%;
+	max-width: 100vw;
+	height: 35px;
+	left: 0;
+	bottom: 0;
+	background-color: rgba(0, 0, 0, 0.7);
+
 	@media only screen and (max-width: 600px) {
 		background-color: rgba(0, 0, 0, 0.7);
 		position: relative;
@@ -258,23 +274,15 @@ footer {
 			min-width: 200px;
 		}
 	}
-	color: white;
-	position: fixed;
-	display: flex;
-	justify-content: space-between;
-	width: 100%;
-	max-width: 100vw;
-	height: 35px;
-	left: 0;
-	bottom: 0;
-	background-color: rgba(0, 0, 0, 0.7);
 
 	.github {
+		display: flex;
+		align-items: center;
+
 		@media only screen and (min-width: 601px) {
 			gap: 0.8rem;
 		}
-		display: flex;
-		align-items: center;
+
 		a {
 			text-decoration: none;
 			color: lightgrey;
@@ -330,6 +338,7 @@ form {
 	input:focus {
 		outline: none;
 	}
+
 	input:focus+label,
 	input:not(:placeholder-shown)+label {
     	transform: scale(0.8) translateY(-3rem) translateX(-1.1rem);
@@ -337,6 +346,7 @@ form {
 		color: white;
 		padding: 0.18rem;
 	}
+	
 	button {
 		border: none;
 		cursor: pointer;

@@ -66,3 +66,10 @@ export function chooseIcon(id) {
 	
 	return icon;
 }
+
+export function getRandomCity() {
+	const cities = ['Berlin', 'Warsaw', 'Washington', 'Amsterdam', 'Beijing', 'Paris', 'London', 'Kyiv', 'Oslo', 'Sydney'];
+	let randomNum = Math.floor(Math.random() * 10);
+
+	return cities[randomNum];
+}

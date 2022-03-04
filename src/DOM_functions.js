@@ -1,8 +1,9 @@
-import { getCurrentWeather, getWeatherData, renderOnSubmit } from './script';
+import { getCurrentWeather } from './script';
 import { toggleUnits, chooseIcon} from './helper_functions';
 
 let weatherToday;
 
+// populates weather forecast for 7 following days
 export function populateForecast(weatherArray) {
 	const forecast = document.querySelector('.forecast');
 	forecast.innerHTML = '';
@@ -13,17 +14,18 @@ export function populateForecast(weatherArray) {
 
 		forecast.insertAdjacentHTML('beforeend',
 			`<div class="day-card">
-			<h4>${day.day}</h4>
-			<p class="max metric">${day.hiTempC} °C</p>
-			<p class="min metric">${day.lowTempC} °C</p>
-			<p class="max imperial">${day.hiTempF} °F</p>
-			<p class="min imperial">${day.lowTempF} °F</p>
-			<img src=${icon}>
+				<h4>${day.day}</h4>
+				<p class="max metric">${day.hiTempC} °C</p>
+				<p class="min metric">${day.lowTempC} °C</p>
+				<p class="max imperial">${day.hiTempF} °F</p>
+				<p class="min imperial">${day.lowTempF} °F</p>
+				<img src=${icon}>
 			</div>`
-		)
+		);
 	});
 }
 
+// populates detailed weather for today
 export async function populateWeatherToday(city) {
 	weatherToday = await getCurrentWeather(city);
 
@@ -31,7 +33,7 @@ export async function populateWeatherToday(city) {
 	weatherTodayDOM.innerHTML = '';
 
 	let icon = chooseIcon(String(weatherToday.weatherId));
-	let windSpeedImperial = (weatherToday.windSpeed / 1.609).toFixed(2)
+	let windSpeedImperial = (weatherToday.windSpeed / 1.609).toFixed(2);
 
 
 	weatherTodayDOM.insertAdjacentHTML('beforeend', 
@@ -95,13 +97,12 @@ export async function populateWeatherToday(city) {
 			</div>
 		</div>	
 	</div>`
-	)
-
+	);
 
 	// add event listeners to switch units
 	const unitsSwapDivs = document.querySelectorAll('.units-swap');
 	
 	unitsSwapDivs.forEach((div) => {
-		div.addEventListener('click', toggleUnits)
+		div.addEventListener('click', toggleUnits);
 	});
 }
